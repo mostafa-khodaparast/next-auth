@@ -2,8 +2,9 @@
 
 import { z } from 'zod'
 import { SignUpSchema } from '@/schemas'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { db } from '@/prisma/db'
+import { getUserByEmail } from '@/prisma/util'
 
 
 export async function signUpAction(data: z.infer<typeof SignUpSchema>) {
@@ -19,11 +20,7 @@ export async function signUpAction(data: z.infer<typeof SignUpSchema>) {
     const hashedPassword = await bcrypt.hash(password, 10)
 
     //check unique email
-    const isUserInDB = await db.user.findUnique({
-        where: {
-            email
-        }
-    })
+    const isUserInDB = await getUserByEmail(email)
     if (isUserInDB) return { error: 'This email already exists' }
 
     //create user in db

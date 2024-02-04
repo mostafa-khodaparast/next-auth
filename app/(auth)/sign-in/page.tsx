@@ -30,9 +30,12 @@ function SignIn() {
     startTransition(() => {
       signInAction(data)
         .then(res => {
-          if (res.success) toast.success(res.success)
-          else toast.error(res.error as string)
+          if (res?.error) toast.error(res.error)
+          else {
+            toast.success("sign in successfully")
+          }
         })
+
     })
 
   }

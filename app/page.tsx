@@ -6,7 +6,7 @@ export default function Home() {
       <div className="mb-16">I wrote this project to learn nextAuth once & for all</div>
       <p>
         Please go to 
-        <Link href='/sign-in' className="px-2 font-bold text-red-800">sign in</Link>
+        <Link href='/sign-up' className="px-2 font-bold text-red-800">sign up</Link>
         page...
       </p>
     </div>
