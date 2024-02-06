@@ -2,7 +2,7 @@
 
 import { z } from 'zod'
 import { SignInSchema } from '@/schemas'
-import { signIn } from '@/auth'
+import { signIn } from '@/auth'                  //this function is used only in server  side
 import { AuthError } from 'next-auth'
 
 

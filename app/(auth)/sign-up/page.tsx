@@ -10,6 +10,7 @@ import LockPersonIcon from '@mui/icons-material/LockPerson'
 import toast from "react-hot-toast"
 import { signUpAction } from "@/actions/signup"
 import { useTransition } from "react"
+import { handleLoginProviders } from "@/utils"
 
 
 
@@ -95,8 +96,8 @@ function SignUp() {
 
         </div>
         <div className="px-4 flex space-x-2 items-center justify-center font-semibold text-lg">
-          <button className=" w-1/2 transition-all duration-500 text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-slate-200 border bottom-1 rounded-lg px-4 py-2">Google</button>
-          <button className="w-1/2 transition-all duration-500 text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-slate-200 border bottom-1 rounded-lg px-4 py-2">Github</button>
+          <button onClick={()=> handleLoginProviders('google')} className=" w-1/2 transition-all duration-500 text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-slate-200 border bottom-1 rounded-lg px-4 py-2">Google</button>
+          <button onClick={()=> handleLoginProviders('github')} className="w-1/2 transition-all duration-500 text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-slate-200 border bottom-1 rounded-lg px-4 py-2">Github</button>
         </div>
         <p>Have an account?
           <Link href='/sign-in' className="px-2 font-bold text-purple-600" >Sign in</Link>
