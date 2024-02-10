@@ -33,9 +33,7 @@ function SignIn() {
       signInAction(data)
         .then(res => {
           if (res?.error) toast.error(res.error)
-          else {
-            toast.success("sign in successfully")
-          }
+          if (res?.success) toast.success(res.success)
         })
 
     })
@@ -86,8 +84,8 @@ function SignIn() {
 
         </div>
         <div className="px-4 flex space-x-2 items-center justify-center font-semibold text-lg">
-          <button onClick={()=> handleLoginProviders('google')} className=" w-1/2 transition-all duration-500 text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-slate-200 border bottom-1 rounded-lg px-4 py-2">Google</button>
-          <button onClick={()=> handleLoginProviders('github')} className="w-1/2 transition-all duration-500 text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-slate-200 border bottom-1 rounded-lg px-4 py-2">Github</button>
+          <button onClick={() => handleLoginProviders('google')} className=" w-1/2 transition-all duration-500 text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-slate-200 border bottom-1 rounded-lg px-4 py-2">Google</button>
+          <button onClick={() => handleLoginProviders('github')} className="w-1/2 transition-all duration-500 text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-slate-200 border bottom-1 rounded-lg px-4 py-2">Github</button>
         </div>
         <p>Do not have an account?
           <Link href='/sign-up' className="px-2 font-bold text-purple-600" >Sign up</Link>
