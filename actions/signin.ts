@@ -6,6 +6,7 @@ import { signIn } from '@/auth'                  //this function is used only in
 import { AuthError } from 'next-auth'
 import { getUserByEmail } from '@/prisma/util'
 import { generateVerificationToken } from '@/utils'
+import { sendVerificationEmail } from '@/utils/mail'
 
 
 export async function signInAction(data: z.infer<typeof SignInSchema>) {
@@ -27,6 +28,7 @@ export async function signInAction(data: z.infer<typeof SignInSchema>) {
 
     if (!existingUser.emailVerified) {
         const verificationToken = await generateVerificationToken(existingUser.email)
+        await sendVerificationEmail(verificationToken.email, verificationToken.token)
         return { success: "verification email sent" }
     }
 

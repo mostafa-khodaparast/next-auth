@@ -6,6 +6,7 @@ import bcrypt from 'bcryptjs'
 import { db } from '@/prisma/db'
 import { getUserByEmail } from '@/prisma/util'
 import { generateVerificationToken } from '@/utils'
+import { sendVerificationEmail } from '@/utils/mail'
 
 
 export async function signUpAction(data: z.infer<typeof SignUpSchema>) {
@@ -35,6 +36,7 @@ export async function signUpAction(data: z.infer<typeof SignUpSchema>) {
 
     //todo: send verification token email
     const verificationToken = await generateVerificationToken(email)
+    await sendVerificationEmail(verificationToken.email, verificationToken.token)
 
     return { success: 'verification email sent' }
 }
