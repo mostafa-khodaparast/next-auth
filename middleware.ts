@@ -9,7 +9,7 @@ const publicRoutes = [
 
 const authRoutes = [
     '/sign-in',
-    '/sign-up'
+    '/sign-up',
 ]
 
 

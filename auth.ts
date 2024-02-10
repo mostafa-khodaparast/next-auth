@@ -10,6 +10,14 @@ export const {
     signIn,
     signOut
 } = NextAuth({
+    events: {
+        async linkAccount({ user }) {           //verify email for users who sign-in with OAuth
+            await db.user.update({
+                where: { id: user.id },
+                data: { emailVerified: new Date() }
+            })
+        }
+    },
     callbacks: {
         async session({ session, token }) {
             if (token.sub && session.user) {
